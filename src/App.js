@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import List from './list'
 import './App.css';
 import EditAbleList from "./EditAbleList";
 import TransformText from "./tranformtext";
