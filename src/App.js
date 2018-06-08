@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import EditAbleList from "./EditAbleList";
 import TransformText from "./tranformtext";
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <TransformText />
+        <EditAbleList />
       </div>
     );
   }
