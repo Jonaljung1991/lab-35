@@ -20,13 +20,12 @@ class transformText extends Component {
     }
     toUpperCaseText = (input) => {
         let upperCase = "";
-
-        if (typeof input[input.length - 1] === "string" && (isNaN(input[input.length - 1]))) {
-            upperCase = input[input.length - 1].toUpperCase();
-            this.setState({
-                upperCaseValue: this.state.upperCaseValue + upperCase
-            })
+        for (let i = 0; i < input.length; i++) {
+            if (typeof input[i] === "string" && (isNaN(input[i]))) {
+                upperCase += input[i].toUpperCase();
+            }
         }
+        this.setState({upperCaseValue: upperCase})
         if (input === "") {
             this.setState({upperCaseValue: ""})
         }
@@ -34,10 +33,18 @@ class transformText extends Component {
 
     toThePowerOf = (input) => {
         let newVal = "";
-        if (!isNaN(parseInt(input[input.length - 1])) && isFinite(input[input.length - 1])) {
-            newVal += (input[input.length - 1] * input[input.length - 1]);
+        for (let i = 0; i < input.length; i++) {
+            if (!isNaN(parseInt(input[i])) && isFinite(input[i])) {
+                newVal += input[i];
+            }
         }
-        this.setState({toThePowerOfValue: newVal})
+        if ((!input.match(/[a-z]/i)) && (input !== "")) {
+
+            newVal = newVal * newVal;
+            newVal = newVal.toString();
+            this.setState({toThePowerOfValue: newVal})
+        }
+          this.setState({toThePowerOfValue: newVal})
     }
 
     reverseText = (input) => {
