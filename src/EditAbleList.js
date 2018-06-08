@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import List from './list';
+import './App.css';
+//import List from './list';
 
 class EditAbleList extends Component {
     constructor(props) {
@@ -17,12 +18,16 @@ class EditAbleList extends Component {
     onSubmit = (e) => {
         console.log(this.state.newText)
         e.preventDefault()
+        let list = [...this.state.items]
+        list.push(this.state.newText)
+        console.log(list)
         this.setState({
             newText: '',
-            list: [...this.state.items,this.state.newText],
+            items: list,
             });
+      
         }
-
+    
   render() {
   
       
@@ -38,8 +43,13 @@ class EditAbleList extends Component {
             <input value={this.state.newText} onChange={this.handleChange} type="text" className="inputfield" placeholder="enter text">
             </input>
             <button>Add Text to List</button>
+            <div className="theList">
+                <ul>
+                    <li>{this.state.items}</li>
+                </ul>
+            </div>
         </form>
-        <List items={this.state.items}/>
+        
     </div>
       );
 
