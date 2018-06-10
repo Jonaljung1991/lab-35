@@ -9,6 +9,7 @@ class EditAbleList extends Component {
             newText: '',
             items : []
         }
+        this.removeIt = this.removeIt.bind(this)
     }
     
     handleChange = (e) => {
@@ -27,6 +28,9 @@ class EditAbleList extends Component {
             });
       
         }
+    removeIt = (event) => {
+        console.log("Hej")
+    }
     
   render() {
   
@@ -43,12 +47,15 @@ class EditAbleList extends Component {
             <input value={this.state.newText} onChange={this.handleChange} type="text" className="inputfield" placeholder="enter text">
             </input>
             <button>Add Text to List</button>
+        </form>
             <div className="theList">
                 <ul>
-                    <li>{this.state.items}</li>
+                    {this.state.items.map(function(leList,newText) {
+                        return <li key={this.newText}>{leList}<button onClick={this.removeIt}>remove</button></li>
+                    })}
                 </ul>
             </div>
-        </form>
+        
         
     </div>
       );
