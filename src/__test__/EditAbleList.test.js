@@ -14,7 +14,7 @@ it("has an inputfield", () => {
     expect(wrapper.exists(input)).toBe(true)
 })
 
-it("has a button", () => {
+it("has an addButton", () => {
     let wrapper = shallow(<EditAbleList/>)
     const btn = <button className="btnAddTxt">Add Text to List</button>
     expect(wrapper.exists(btn)).toBe(true)     
@@ -27,18 +27,44 @@ it("has a list", () => {
     expect(wrapper.exists(list)).toBe(true)
 })
 
-test("Check initial list state" , () =>{
+test("has an removeButton", () => {
+    let wrapper = shallow(<EditAbleList/>)
+    wrapper.setState({
+        newText:"hejsan",
+        items: ["hejsan"]
+    }) 
+    expect(wrapper.find(".btnRemove")).toHaveLength(1)
+})
+
+test("Check initial newText state" , () =>{
     let wrapper = shallow(<EditAbleList/>);
     expect(wrapper.state("newText")).toBe('');
 })
 
-test("check if input is string", () => {
-    let wrapper = shallow(<EditAbleList/>);
-    expect(wrapper.value(newText)).toBe("string");
+test("Check initial items state" , () =>{
+ let wrapper = shallow(<EditAbleList/>);
+ expect(wrapper.state("items")).toEqual([]);
 })
 
-//test("Check initial list state" , () =>{
-// let wrapper = shallow(<EditAbleList/>);
-// expect(wrapper.state("list")).toBe([]);
-//})
+test("Check listelement onclick", () => {
+    let wrapper = shallow(<EditAbleList/>)
+    wrapper.setState({
+        newText: "abc",
+        items: ["abc"]
+    })
+    expect(wrapper.exists(<li>abc<button>remove</button></li> )).toBe(true)
+    expect(wrapper.state("items")).toEqual(["abc"])
+})
+
+test("check if input is string", () => {
+    let wrapper = shallow(<EditAbleList/>);
+    expect(wrapper.find(".inputfield")).toHaveLength(1);
+    wrapper.find(".inputfield").simulate('change', { target: {name: "newText",value: "abc"}})
+    expect(wrapper.state("newText")).toEqual("abc")
+})
+    
+
+
+
+
 

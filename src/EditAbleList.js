@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-//import List from './list';
+
 
 class EditAbleList extends Component {
     constructor(props) {
@@ -8,8 +8,9 @@ class EditAbleList extends Component {
         this.state = { 
             newText: '',
             items : []
+            
         }
-        this.removeIt = this.removeIt.bind(this)
+        
     }
     
     handleChange = (e) => {
@@ -17,23 +18,34 @@ class EditAbleList extends Component {
     }
     
     onSubmit = (e) => {
-        console.log(this.state.newText)
-        e.preventDefault()
+       e.preventDefault()
         let list = [...this.state.items]
         list.push(this.state.newText)
-        console.log(list)
         this.setState({
             newText: '',
             items: list,
+            
             });
       
         }
-    removeIt = (event) => {
-        console.log("Hej")
+    removeIt = (e,index) => {
+        //let newList = this.state.items
+        console.log(index)
+        let list =  [...this.state.items];
+        list.splice(index,1);
+        this.setState({
+            items: list
+            
+        })
+        
     }
     
   render() {
   
+      let list = this.state.items
+      let list1 = list.map((item, index)=> {
+          return <li key={index}>{item}<button className="btnRemove" onClick={(e) => this.removeIt(e,index)}>remove</button></li> 
+      })
       
 
     return (
@@ -46,13 +58,11 @@ class EditAbleList extends Component {
             Enter some text:
             <input value={this.state.newText} onChange={this.handleChange} type="text" className="inputfield" placeholder="enter text">
             </input>
-            <button>Add Text to List</button>
+            <button className="btnAdd">Add Text to List</button>
         </form>
             <div className="theList">
                 <ul>
-                    {this.state.items.map(function(leList,newText) {
-                        return <li key={this.newText}>{leList}<button onClick={this.removeIt}>remove</button></li>
-                    })}
+                    {list1}
                 </ul>
             </div>
         
