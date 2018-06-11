@@ -35,6 +35,7 @@ test("Checking reverseTextValue state" , () =>{
   expect(wrapper.state("reverseTextValue")).toEqual("jeh");
 })
 
+
 test("Checking reverseText output" , () =>{
   let wrapper = shallow(<TransformText/>);
   wrapper.find(".transformInput").simulate("change" , {target : {name:"inputValue",value : "hej"}});
@@ -52,6 +53,13 @@ test("Checking upperCaseValue state" , () =>{
   let wrapper = shallow(<TransformText/>);
   wrapper.find(".transformInput").simulate("change" , {target : {name:"inputValue",value : "hej"}});
   expect(wrapper.state("inputValue")).toEqual("hej");
+  expect(wrapper.state("upperCaseValue")).toEqual("HEJ");
+})
+
+test("Checking upperCaseValue state with incorrect input" , () =>{
+  let wrapper = shallow(<TransformText/>);
+  wrapper.find(".transformInput").simulate("change" , {target : {name:"inputValue",value : "hej1"}});
+  expect(wrapper.state("inputValue")).toEqual("hej1");
   expect(wrapper.state("upperCaseValue")).toEqual("HEJ");
 })
 
@@ -75,12 +83,19 @@ test("Checking toThePowerOfValue state" , () =>{
   expect(wrapper.state("toThePowerOfValue")).toEqual("25");
 })
 
+test("Checking toThePowerOfValue state with incorrect input" , () =>{
+  let wrapper = shallow(<TransformText/>);
+  wrapper.find(".transformInput").simulate("change" , {target : {name:"inputValue",value : "5ab"}});
+  expect(wrapper.state("inputValue")).toEqual("5ab");
+  expect(wrapper.state("toThePowerOfValue")).toEqual("");
+})
+
 
 test("Checking toThePowerOfValue output" , () =>{
   let wrapper = shallow(<TransformText/>);
   wrapper.find(".transformInput").simulate("change" , {target : {name:"inputValue",value : "5"}});
   expect(wrapper.state("inputValue")).toEqual("5");
   expect(wrapper.state("toThePowerOfValue")).toEqual("25");
-  expect(wrapper.contains(<p>{wrapper.state("reverseTextValue")}</p>)).toBe(true);
+  expect(wrapper.contains(<p>{wrapper.state("toThePowerOfValue")}</p>)).toBe(true);
 })
 })

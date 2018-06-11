@@ -43,8 +43,9 @@ class transformText extends Component {
             newVal = newVal * newVal;
             newVal = newVal.toString();
             this.setState({toThePowerOfValue: newVal})
+        }else{
+          this.setState({toThePowerOfValue:""})
         }
-          this.setState({toThePowerOfValue: newVal})
     }
 
     reverseText = (input) => {
