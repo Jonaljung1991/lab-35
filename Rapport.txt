@@ -1,0 +1,42 @@
+Rapport Lab 35, vi jämför våran lab med Robin och Jonathan
+
+Vi har listan som gemensam komponent.
+
+
+
+1.Har ni testat samma saker?
+
+De testar app.test.js i deras komponentfil medans vi tog för givet att den kördes automatiskt
+De testar med .find och leter igenom allt som ska vara med i komponenten medans vi testar varje element var för sig.
+De kollar med .find på hela DOM'en.
+
+
+2.Vilka är de viktigaste testfallen? Varför är de viktiga?
+Rendera komponenterna, kolla så alla element som ska vara med finns.
+Testa state vid simulering och de actions som ska finnas.
+
+
+3.Finns det några onödiga testfall i deras kod? Varför är de onödiga?
+Att de renderade app.test.js i deras komponent, de gjorde samma test 2 gånger. Annars inget. 
+
+
+Counter:
+
+1.
+
+De börjar med kolla ifall hela komponenten render som den ska, för att sedan kolla state på counter på 0. De simulerar ett klick 
+så att counters state blir 1 ist för 0.
+De kollar om inputvalue är undefined från börjar som de ska vara. Kollar om de man skriver in är ett nummer om de inte är ett nummber
+ska bli NaN. Om inputvalue är te.x: 5 så simulerar de ett klick som ersätter state med vi skriver om det är ett nummer, om det inte
+nummer så kommer state vara oförändrad.
+
+User.
+
+1.
+
+De börjar med kolla ifall hela komponenten render som den ska. Testar change på input simulerar en change med onclick som staten email
+är satt till "email". så det är @blabla.com. Kollar om det är en korrekt bild med url, gör change simulerar med klick kollar så att 
+statens image är true och tvärtom ska den bli false. Om staten har rätt email så simular vi change och kollar så att inte samma
+user finns 2gånger, de gör staten till en array. Om användaren finns så läggs den in i en nya lista.
+
+
