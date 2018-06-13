@@ -1,5 +1,10 @@
+body {
+    background-color: darkslategray;
+    color: white;
+}
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -30,4 +35,5 @@
 .theList {
     background-color: yellow;
     align-content: center;
-    }
+    color: black;
+}

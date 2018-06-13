@@ -15,10 +15,14 @@ class EditAbleList extends Component {
     
     handleChange = (e) => {
         this.setState({newText: e.target.value})
+        
     }
     
     onSubmit = (e) => {
-       e.preventDefault()
+//       e.preventDefault()
+        if(this.state.newText === '' ) {
+            alert("Please enter a string to add to list")
+        } else {
         let list = [...this.state.items]
         list.push(this.state.newText)
         this.setState({
@@ -28,6 +32,7 @@ class EditAbleList extends Component {
             });
       
         }
+    }
     removeIt = (e,index) => {
         //let newList = this.state.items
         console.log(index)
@@ -54,12 +59,11 @@ class EditAbleList extends Component {
     <div className="listDiv">
 
     <h2>List</h2>
-        <form className="theForm" onSubmit={this.onSubmit}>
-            Enter some text:
+
             <input value={this.state.newText} onChange={this.handleChange} type="text" className="inputfield" placeholder="enter text">
             </input>
-            <button className="btnAdd">Add Text to List</button>
-        </form>
+            <button onClick= {this.onSubmit} className="btnAdd">Add Text to List</button>
+        
             <div className="theList">
                 <ul>
                     {list1}
